@@ -70,7 +70,7 @@ void skills (){
   //second alliance mogo
   baseMove(-10);
   waitBase(1000);
-  baseTurn(13);
+  baseTurn(23);
   waitBase(1000);
   baseMove(50);
   waitBase(1000);

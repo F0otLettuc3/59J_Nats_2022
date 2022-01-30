@@ -1,8 +1,8 @@
 #include "main.h"
-#define DEFAULT_KP 0.28
-#define DEFAULT_KD 0.0
+#define DEFAULT_KP 0.35
+#define DEFAULT_KD 0.12
 #define DEFAULT_TURN_KP 1.35
-#define DEFAULT_TURN_KD 0.0
+#define DEFAULT_TURN_KD 1.12
 #define RAMPING_POW 1.2
 #define DISTANCE_LEEWAY 15
 #define BEARING_LEEWAY 1.5
