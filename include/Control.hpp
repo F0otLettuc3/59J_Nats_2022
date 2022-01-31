@@ -12,4 +12,5 @@ void unPauseBase();
 void waitBase(double cutoff);
 void Control(void * ignore);
 void resetCoords(double x, double y);
+void park(void * ignore);
 #endif

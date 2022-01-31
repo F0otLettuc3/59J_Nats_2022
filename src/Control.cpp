@@ -16,6 +16,9 @@ double kP = DEFAULT_KP, kD = DEFAULT_KD;
 
 bool turnMode = false, pauseBase = false;
 
+double targEncdImu = 0, errorEncdImu = 0, parkPower = 0, targParkPower = 0;
+
+
 void baseMove(double dis, double kp, double kd){
   printf("baseMove(%.2f)\n", dis);
   turnMode = false;
@@ -150,4 +153,8 @@ void resetCoords(double x, double y){
   targEncdR = 0;
 
   setCoords(x, y);
+}
+
+void park(void * ignore){
+
 }
