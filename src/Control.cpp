@@ -155,6 +155,11 @@ void resetCoords(double x, double y){
   setCoords(x, y);
 }
 
-void park(void * ignore){
+  void park(double speed){
+  Imu imu (imuPort);
+  while(imu.get_roll() < -5){
+  powerBase(speed, speed);
+}
+
 
 }
