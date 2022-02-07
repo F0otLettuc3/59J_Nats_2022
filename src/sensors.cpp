@@ -8,13 +8,16 @@ void Sensors(void * ignore){
   Motor FR (FRmotor);
   Motor BR (BRmotor);
   Imu imu (imuPort);
+  ADIEncoder rEncoder (rTrackerTop, rTrackerBottom);
+  ADIEncoder lEncoder (lTrackerTop, rTrackerBottom);
   while(true){
     if(!imu.is_calibrating()){
-      encdL = FL.get_position();
+      encdL = BR.get_position();
       encdR = FR.get_position();
       encdImu = imu.get_pitch();
       bearing = imu.get_rotation();
       angle = halfPI - bearing * toRad;
+
     }
     delay(5);
   }

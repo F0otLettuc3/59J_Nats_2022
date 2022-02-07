@@ -88,10 +88,12 @@ void Control(void * ignore){
   Motor FR (FRmotor);
   Motor BR (BRmotor);
   Imu imu (imuPort);
+  ADIEncoder lEncoder (lTrackerTop,lTrackerBottom);
+  ADIEncoder rEncoder (rTrackerTop, rTrackerBottom);
 
+  FL.tare_position();
+  FR.tare_position();
 
-  BL.tare_position();
-  BR.tare_position();
 
   double prevErrorEncdL = 0, prevErrorEncdR = 0, prevErrorBearing = 0;
   while(competition::is_autonomous()){
@@ -126,6 +128,7 @@ void Control(void * ignore){
       powerL = abscap(powerL, MAX_POW);
       powerR = abscap(powerR, MAX_POW);
     }
+
     FL.move(powerL);
     BL.move(powerL);
     FR.move(powerR);
@@ -153,13 +156,4 @@ void resetCoords(double x, double y){
   targEncdR = 0;
 
   setCoords(x, y);
-}
-
-  void park(double speed){
-  Imu imu (imuPort);
-  while(imu.get_roll() < -5){
-  powerBase(speed, speed);
-}
-
-
 }

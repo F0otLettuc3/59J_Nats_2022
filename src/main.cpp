@@ -10,6 +10,8 @@ void initialize() {
 		Motor rLift (RLiftmotor, E_MOTOR_GEARSET_18, true, E_MOTOR_ENCODER_DEGREES);
 		Motor Bintake (Bmotor, E_MOTOR_GEARSET_06, true, E_MOTOR_ENCODER_DEGREES);
 		Motor Fintake (Fmotor, E_MOTOR_GEARSET_06, false, E_MOTOR_ENCODER_DEGREES);
+		ADIEncoder lEncoder(lTrackerTop, lTrackerBottom, true);
+		ADIEncoder rEncoder(rTrackerTop, rTrackerBottom, true);
 		Imu imu (imuPort);
 		imu.reset();
 
@@ -51,13 +53,15 @@ void opcontrol() {
 		Motor mogo4BarLeft (Lliftmotor);
 		Motor mogo4BarRight (RLiftmotor);
 		Motor mogo4BarInsertion(Fmotor);
+		ADIEncoder lEncoder(lTrackerTop,lTrackerBottom);
+		ADIEncoder rEncoder(rTrackerTop, rTrackerBottom);
 		twoBarLift(TWOBARLOW);
 		fourBarLift(FOURBARLOW);
 		fourBarInsertionLift(FOURBARINSERTIONHIGH);
 
 		int fourBarSensitivity = 2;
 		int fourBarSetTarg = 1;
-		bool liftstate = true;
+		bool liftstate = false;
 		bool bliftstate = false;
 
 	while (true) {
@@ -77,6 +81,10 @@ void opcontrol() {
 	else if(master.get_digital_new_press(DIGITAL_L2)){
 			fourBarLift(FOURBARLOW);
 		}
+	else if(master.get_digital_new_press(DIGITAL_X)){
+		fourBarLift(FOURBARMEDIUM);
+
+	}
 
 	if (master.get_digital_new_press(DIGITAL_R2)){
 		bliftstate = !bliftstate;
