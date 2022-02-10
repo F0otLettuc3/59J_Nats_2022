@@ -7,9 +7,8 @@ void Sensors(void * ignore){
   Motor BL (BLmotor);
   Motor FR (FRmotor);
   Motor BR (BRmotor);
+  
   Imu imu (imuPort);
-  ADIEncoder rEncoder (rTrackerTop, rTrackerBottom);
-  ADIEncoder lEncoder (lTrackerTop, rTrackerBottom);
   while(true){
     if(!imu.is_calibrating()){
       encdL = BR.get_position();

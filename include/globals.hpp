@@ -10,13 +10,12 @@
 #define Bmotor 8
 #define Lliftmotor 20
 #define RLiftmotor 11
+#define LEncdTop 7
+#define LEncdBot  8
+#define REncdTop 4
+#define REncdBot 5
 
-
-#define imuPort 14
-#define rTrackerTop 7
-#define rTrackerBottom 8
-#define lTrackerTop 4
-#define lTrackerBottom 5
+#define imuPort 15
 
 
 #endif

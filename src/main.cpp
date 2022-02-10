@@ -10,8 +10,6 @@ void initialize() {
 		Motor rLift (RLiftmotor, E_MOTOR_GEARSET_18, true, E_MOTOR_ENCODER_DEGREES);
 		Motor Bintake (Bmotor, E_MOTOR_GEARSET_06, true, E_MOTOR_ENCODER_DEGREES);
 		Motor Fintake (Fmotor, E_MOTOR_GEARSET_06, false, E_MOTOR_ENCODER_DEGREES);
-		ADIEncoder lEncoder(lTrackerTop, lTrackerBottom, true);
-		ADIEncoder rEncoder(rTrackerTop, rTrackerBottom, true);
 		Imu imu (imuPort);
 		imu.reset();
 
@@ -23,7 +21,6 @@ void initialize() {
 		Task mogo4BarControlTask(mogo4BarControl, (void*)"PROS", TASK_PRIORITY_DEFAULT,TASK_STACK_DEPTH_DEFAULT,"My Task");
 		Task mogo2BarControlTask(mogo2BarControl, (void*)"PROS", TASK_PRIORITY_DEFAULT,TASK_STACK_DEPTH_DEFAULT,"My Task");
 		Task mogo4BarInsertionControlTask(mogo4BarInsertionControl, (void*)"PROS", TASK_PRIORITY_DEFAULT,TASK_STACK_DEPTH_DEFAULT,"My Task");
-
 }
 
 
@@ -53,8 +50,8 @@ void opcontrol() {
 		Motor mogo4BarLeft (Lliftmotor);
 		Motor mogo4BarRight (RLiftmotor);
 		Motor mogo4BarInsertion(Fmotor);
-		ADIEncoder lEncoder(lTrackerTop,lTrackerBottom);
-		ADIEncoder rEncoder(rTrackerTop, rTrackerBottom);
+		// ADIEncoder lEncoder(lTrackerTop,lTrackerBottom);
+		// ADIEncoder rEncoder(rTrackerTop, rTrackerBottom);
 		twoBarLift(TWOBARLOW);
 		fourBarLift(FOURBARLOW);
 		fourBarInsertionLift(FOURBARINSERTIONHIGH);

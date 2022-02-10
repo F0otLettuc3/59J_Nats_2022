@@ -1,5 +1,5 @@
 #include "main.h"
-int DEBUG_MODE = 2;
+int DEBUG_MODE = 6;
 void printPosMaster(){
   Controller master(E_CONTROLLER_MASTER);
   Imu imu (imuPort);
@@ -20,10 +20,19 @@ void printTargPowerTerminal(){
   printf("targPowerL: %.2f, targPowerR: %.2f\n", targPowerL, targPowerR);
 }
 void printPowerTerminal(){
+  if(turnMode) printf("errorBearing: %.2f\n", errorBearing);
+  else printf("errorEncdL: %.2f errorEncdR: %.2f\n", errorEncdL, errorEncdR);
   printf("powerL: %.2f powerR: %.2f\n", powerL, powerR);
 }
+
+void printAllTerminal(){
+  printf("x: %.2f y: %.2f bearing: %.2f\n", X, Y, bearing);
+  if(turnMode) printf("errorBearing: %.2f\n", errorBearing);
+  else printf("errorEncdL: %.2f errorEncdR: %.2f\n", errorEncdL, errorEncdR);
+  printf("targPowerL: %.2f, targPowerR: %.2f\n", targPowerL, targPowerR);
+}
 void Debug(void * ignore){
-  Imu imu (imuPort);
+   Imu imu (imuPort);
   while(true){
     printPosMaster();
     if(imu.is_calibrating()) {
@@ -35,8 +44,10 @@ void Debug(void * ignore){
         case 3: printErrorTerminal(); break;
         case 4: printTargPowerTerminal(); break;
         case 5: printPowerTerminal(); break;
+        case 6: printAllTerminal(); break;
       }
     }
+    // printf("imu reading: %.2f\n", imu.get_heading());
     delay(50);
   }
 }
